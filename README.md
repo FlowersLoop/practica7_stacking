@@ -1,4 +1,4 @@
-# 📊 P7 - Stacking de Imágenes Binarias
+# P7 - Stacking de Imágenes Binarias
 
 **Procesamiento Digital de Imágenes**  
 *Ernesto Armando Gaytán Brieño y Fernando Flores López*  
@@ -6,36 +6,36 @@
 
 ---
 
-## 🎯 Descripción
+## Descripción
 
 Este proyecto implementa y compara dos métodos para aplicar el **filtro de mediana** a imágenes en escala de grises:
 
 1. **Método Directo**: Aplicación del filtro mediano directamente sobre la imagen cuantizada
 2. **Método de Stacking**: Descomposición por umbrales → Filtrado binario → Reconstrucción por apilamiento
 
-### ✨ Características
+### Características
 
-- 🔢 Cuantización de imágenes de 256 a L niveles (configurable)
-- 🎭 Descomposición por umbral en imágenes binarias
-- 🔧 Filtrado mediano 3×3 sobre planos binarios
-- 📈 Comparación cuantitativa (MSE y píxeles diferentes)
-- 📊 Visualizaciones comparativas completas
-
----
-
-## 🏗️ Estructura del Proyecto
-```
-📁 P7-Stacking/
-├── 📄 P7_stacking_main.m          # Script principal
-├── 📄 umbral_descomposicion.m     # Descomposición por umbral
-├── 📄 stacking_mediana.m          # Filtrado y apilamiento
-├── 🖼️ blackmidi.png                # Imagen de ejemplo
-└── 📖 README.md                    # Este archivo
-```
+-  Cuantización de imágenes de 256 a L niveles (configurable)
+-  Descomposición por umbral en imágenes binarias
+-  Filtrado mediano 3×3 sobre planos binarios
+-  Comparación cuantitativa (MSE y píxeles diferentes)
+-  Visualizaciones comparativas completas
 
 ---
 
-## 🚀 Uso
+## Estructura del Proyecto
+```
+  P7-Stacking/
+├──   P7_stacking_main.m          # Script principal
+├──   umbral_descomposicion.m     # Descomposición por umbral
+├──   stacking_mediana.m          # Filtrado y apilamiento
+├──   blackmidi.png               # Imagen de ejemplo
+└──   README.md                    
+```
+
+---
+
+## Uso
 
 ### Ejecución Principal
 ```matlab
@@ -51,9 +51,9 @@ nombreImagen = 'tu_imagen.png';  % Imagen a procesar (máx 640×480)
 
 ---
 
-## 🔬 Metodología
+## Metodología
 
-### 1️⃣ Cuantización
+### 1. Cuantización
 
 La imagen original (256 niveles) se reduce a **L niveles**:
 ```matlab
@@ -61,7 +61,7 @@ delta = 256 / L;
 I_L = floor(Igray / delta);  % Valores en [0, L-1]
 ```
 
-### 2️⃣ Descomposición por Umbral
+### 2. Descomposición por Umbral
 
 Se generan **L-1 imágenes binarias** donde:
 ```
@@ -69,7 +69,7 @@ b_k(x,y) = 1  si  I_L(x,y) ≥ k
 b_k(x,y) = 0  en otro caso
 ```
 
-### 3️⃣ Filtrado y Stacking
+### 3. Filtrado y Stacking
 
 Cada plano binario se filtra con mediana 3×3 y se suman todos los resultados:
 ```
@@ -79,7 +79,7 @@ Gstack(x,y) = Σ mediana_3×3(b_k(x,y))
 
 ---
 
-## 📊 Resultados
+## Resultados
 
 El programa genera **3 figuras**:
 
@@ -127,7 +127,7 @@ Comparación GA vs Gstack:
 
 ---
 
-## 📚 Fundamentos Teóricos
+## Fundamentos Teóricos
 
 ### Filtro de Mediana
 
@@ -143,7 +143,7 @@ Esta propiedad permite que el **método de stacking reproduzca exactamente** el 
 
 ---
 
-## ⚠️ Requisitos
+## Requisitos
 
 - MATLAB R2016b o superior
 - Image Processing Toolbox
@@ -151,7 +151,7 @@ Esta propiedad permite que el **método de stacking reproduzca exactamente** el 
 
 ---
 
-## 🎨 Ejemplos de Uso
+## Ejemplos de Uso
 
 ### Cambiar nivel de cuantización
 ```matlab
@@ -168,7 +168,7 @@ nombreImagen = 'tu_foto.jpg';
 
 ---
 
-## 🤔 Preguntas Clave
+## Preguntas Clave
 
 1. **¿Por qué GA y Gstack son casi idénticos?**  
    Por la propiedad matemática del filtro mediano con descomposición por umbral.
@@ -183,23 +183,23 @@ nombreImagen = 'tu_foto.jpg';
 
 ---
 
-## 📝 Notas Importantes
+## Notas Importantes
 
-- 🖼️ Las imágenes se visualizan reescaladas a [0, 255] para mejor apreciación
-- 🔍 El MSE cercano a cero confirma la equivalencia teórica
-- ⚡ Para imágenes grandes, el método directo es más eficiente computacionalmente
-- 🎯 L=64 es un buen balance entre calidad y costo computacional
+-  Las imágenes se visualizan reescaladas a [0, 255] para mejor apreciación
+-  El MSE cercano a cero confirma la equivalencia teórica
+-  Para imágenes grandes, el método directo es más eficiente computacionalmente
+-  L=64 es un buen balance entre calidad y costo computacional
 
 ---
 
-## 👨‍💻 Autores
+## Autores
 
 - **Ernesto Armando Gaytán Brieño**
 - **Fernando Flores López**
 
 ---
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto fue desarrollado con fines académicos para la materia de **Procesamiento Digital de Imágenes**.
 
@@ -207,7 +207,7 @@ Este proyecto fue desarrollado con fines académicos para la materia de **Proces
 
 <div align="center">
 
-**⭐ Si te sirvió este proyecto, considera darle una estrella ⭐**
+** Si te sirvió este proyecto, considera darle una estrella **
 
 *Hecho con 💙 y MATLAB*
 
