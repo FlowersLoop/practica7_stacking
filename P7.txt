@@ -1,0 +1,62 @@
+Práctica No. 7
+Mejora en el plano espacial
+Filtros No Lineales
+
+11 de noviembre de 2025
+
+1. Introducción
+
+El filtrado No Lineal de imágenes y señales abre una amplia gama de técnicas para el procesamiento de las mismas. Mediante los filtros No Lineales es posible eliminar ruido que por su naturaleza no puede ser eliminado satisfactoriamente mediante el procesamiento lineal tal como los filtros en frecuencia. Los filtros No Lineales más comunes se conocen como filtros de estadísticas ordenadas o simplemente filtros ordenados. Esto se debe a que para calcular el valor de salida del filtro, primero es necesario ordenar el conjunto de muestras de forma ascendente. El filtro ordenado más común es el filtro mediano de los niveles de gris de un vecindario de la imagen. El valor del pixel de salida es uno de los pixels del vecindario, lo que lo hace sumamente atractivo para algunas aplicaciones. Además de los filtros medianos otros filtros ordenados comunes son el mínimo y el máximo.
+
+En esta práctica, todas las imágenes las deberás conseguir tú. Puedes usar cualquier imagen decente cuyo tamaño no sea mayor a 640 por 480 pixels.
+
+2. Separabilidad de Filtros Medianos
+
+El filtro mediano separable consiste en dos ventanas unidimensionales del mismo tamaño pero transpuestas. El procedimiento consiste en filtrar primero en una dimensión con un filtro y luego en la otra utilizando la versión transpuesta del filtro anterior. La idea de este filtro es reducir el número de operaciones a realizar tomando a la imagen como una señal unidimensional procesándola sobre dos dimensiones.
+
+Utilizando alguna imagen compara el desempeño del filtro mediano bidimensional de tamaño 3 × 3 y del filtro mediano separable de ventanas de tamaño 3 × 1 y 1 × 3. Repite el procedimiento del filtro mediano separable intercambiando el orden de las ventanas y compara los resultados.
+
+3. Filtro Med/Max
+
+Los filtros Med/Max conservan mejor la información estructural multidimensional de una señal. El filtro trata de combinar toda la información unidimensional para obtener un estimado multidimensional. Sin embargo los filtros Med/Max dependen en gran medida de la búsqueda exhaustiva de líneas que crucen por el centro de la ventana en todas las direcciones posibles. El filtro Med/Max se define como:
+ym,n = max{z1, z2, ..., zk}, donde zj = mediana{todos − los − pixels − de − la − línea − que − cruza − el − centro − de − la − ventana}. En este caso, la variable k depende del tamaño de la ventana. Aunque k es finito, puede llegar a ser muy grande incluso para ventanas de tamaño pequeño.
+
+Para el caso de una ventana de tamaño 3 × 3, el número de líneas es de 4. Entonces,
+
+ym,n = max{z1, z2, z3, z4}
+donde
+z1 = mediana{am,n−N, ..., am,n, ..., am,n+N},
+z2 = mediana{am−N,n, ..., am,n, ..., am+N,n},
+z3 = mediana{am+N,n−N, ..., am,n, ..., am−N,n+N} y
+z4 = mediana{am−N,n−N, ..., am,n, ..., am+N,n+N}
+
+donde N viene de la definición del tamaño de la ventana 2N + 1. Para una ventana de tamaño 3 × 3, N = 1.
+
+Utilizando alguna imagen distinta, compara el resultado de filtrar la imagen con el filtro mediano standard de tamaño 3 × 3 y el filtro Med/Max de tamaño 3 × 3.
+
+4. Filtros Mediano Multi-Etapas
+
+El filtro Med/Max presenta una respuesta asimétrica debido al operador Max. Para evitar este problema, se propuso un nuevo tipo de filtro llamado Multi-Etapas que se define como: ym,n = mediana{r1, r2, am,n}, donde r1 = mediana{z1, z2, am,n} y r2 = mediana{z3, z4, am,n} y zi se define como el filtro Med/Max de tamaño 3 × 3.
+
+Utilizando la misma imagen del inciso anterior compara el desempeño del filtro mediano standard y del filtro Mediano Multi-Etapas ambos de tamaño 3 × 3.
+
+5. Filtrado Mediano Recurrente y Raíces de las Señales
+
+Los filtros recurrentes son aquellos que a cada paso, los N pixels de la izquierda y superiores de la ventana son reemplazados por los N puntos previamente filtrados, esto es:
+y(n) = mediana{y(n − N), ..., y(n − 1), x(n), x(n + 1), ..., x(n + N)}
+
+donde x(n) y y(n) son las muestras de la entrada y salida respectivamente en la posición n.
+
+La raíz de un filtro ordenado se define como una señal que no es modificada por el filtro. En las propiedades determinísticas de los filtros ordenados se conoce que después de repetidas pasadas de una señal por un filtro ordenado, ésta señal se convertirá en una raíz. Sin embargo, las raíces obtenidas por distintos tipos de filtros no necesariamente son las mismas para la misma señal.
+
+Utilizando una imagen distinta, aplique el filtro mediano standard de tamaño 3 × 3 en repetidas ocasiones hasta que se obtenga la raíz. Cuente el número de veces que la imagen fue pasada por el filtro. Repita el procedimiento pero esta vez utilizando el filtro mediano recurrente de tamaño 3 × 3. Compare los resultados.
+
+6. Descomposición de Umbral y Apilación (Stacking)
+
+Escriba una función que realice la descomposición de umbral de una imagen de 256 niveles de gris en 255 señales binarias. Escriba otro programa que tome las 255 señales binarias y las junte en una sola señal de 256 niveles de gris utilizando la técnica de Apilación o Stacking. Utilizando una nueva imagen, filtre ésta utilizando el filtro mediano standard. Tome la misma imagen y descomponga ésta por umbral. Filtre las 255 señales binarias utilizando el filtro mediano standard y posteriormente junte las 255 señales filtradas mediante el Stacking. Compare los resultados.
+
+La fecha de entrega de la práctica es el día viernes 14 de noviembre del 2025.
+
+Jueves 20 R
+
+2
