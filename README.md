@@ -2,7 +2,6 @@
 ## Descomposición por Umbral y Apilación (Stacking)
 
 **Autores:** Ernesto Armando Gaytán Brieño y Fernando Flores López
-
 **Materia:** Procesamiento de Imágenes  
 **Fecha:** Otoño 2025
 
